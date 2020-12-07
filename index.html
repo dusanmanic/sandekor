@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Dekor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header>
+        <ul>
+            <li><button class="headerBtns">POČETNA</button></li>
+            <li><button class="headerBtns" onclick="">O NAMA</button></li>
+            <li><button class="headerBtns" onclick="">GALERIJA</button></li>
+            <li><button class="headerBtns" onclick="">PRODAJA</button></li>
+            <li><button class="headerBtns" onclick="">VIDEO</button></li>
+            <li><button class="headerBtns" onclick="">SARADNICI</button></li>
+            <li><button class="headerBtns" onclick="">REFERENCE</button></li>
+            <li><button class="headerBtns" onclick="location.href = 'kontakt.html';">KONTAKT</button></li>
+        </ul>
+        <ul class="loginSignin">
+            <li><button class="headerBtns" id="login" onclick="location.href = '../login/login.html'">Log in</button></li>
+            <li><button class="headerBtns" id="logout" onclick="logout()">Log out</button></li>
+            <li><button class="headerBtns" id="panel" onclick="location.href = 'adminpanel.html'">Panel</button></li>
+            <li><button class="headerBtns" id="signin" onclick="">Sign in</button></li>
+        </ul>
+    </header>
+
+    <div id="container">
+
+    </div>
+
+    <footer>
+        <span class="spanLevo">
+            tel: 063 80 20 267; 064 26 62 854; e-mail: sandekor@gmail.com
+        </span>
+    </footer>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyB7IDwPw2CIzNiTM4ihmUT9fyaFD2lv8pY",
+            authDomain: "sandekor018.firebaseapp.com",
+            projectId: "sandekor018",
+            storageBucket: "sandekor018.appspot.com",
+            messagingSenderId: "376132193102",
+            appId: "1:376132193102:web:bc181b68de4c51f863ac1f"
+        };
+        // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    let db = firebase.firestore();
+    let storage = firebase.storage()
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
