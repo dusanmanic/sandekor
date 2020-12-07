@@ -6,13 +6,14 @@
     <title>San Dekor</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="panel.css">
+    <link rel="stylesheet" href="slide.css">
 </head>
 <body>
     
     <header>
         <ul>
             <li><button class="headerBtns" onclick="location.href = 'index.html';">POČETNA</button></li>
-            <li><button class="headerBtns" onclick="location.href = 'slide.html';">Slide</button></li>
+            <li><button class="headerBtns" onclick="">Slide</button></li>
             <li><button class="headerBtns" onclick="">GALERIJA</button></li>
             <li><button class="headerBtns" onclick="">PRODAJA</button></li>
             <li><button class="headerBtns" onclick="">VIDEO</button></li>
@@ -28,15 +29,17 @@
         </ul>
     </header>
 
-    <div id="container">
+    <div id="containerSlide">
+        <div class="uploadInput">
+            <span>Učitaj fotografije</span>
+            <button class="loadSlideImages" onclick="loadSlideImages()">Load images</button><br>
+            <span>Izaberi fotografije</span>
+            <input type="file" name="fileUpload" id="fileUpload" multiple><br>
+        </div>
+        <div class="slideImages">
 
+        </div>
     </div>
-
-    <footer>
-        <span class="spanLevo">
-            tel: 063 80 20 267; 064 26 62 854; e-mail: sandekor@gmail.com
-        </span>
-    </footer>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
@@ -63,5 +66,6 @@
     </script>
     <script src="panel.js"></script>
     <script src="script.js"></script>
+    <script src="slide.js"></script>
 </body>
 </html>

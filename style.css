@@ -57,7 +57,7 @@ li {
     outline: none;
 }
 
-#container {
+#container, #containerSlide {
     width: 100vw;
     height: 76vh;
 }
