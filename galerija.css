@@ -1,0 +1,14 @@
+#containerGalerija {
+    width: 800px;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.holderDiv {
+    width: 150px;
+    height: 100px;
+    background-color: black;
+    margin: 10px;
+}

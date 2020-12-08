@@ -1,6 +1,8 @@
 let kategorijeDiv = document.querySelector('.kategorijeDiv')
 let kategorijaInput = document.getElementById('kategorijaInput')
 let delCounter = 0
+let diffCounter = 0
+let uploadKategorija
 
 db.collection('galerijaKategorije')
 .get()
@@ -35,17 +37,119 @@ db.collection('galerijaKategorije')
         btn.addEventListener('click', event => {
             let btnDiv = document.querySelector(`#${event.path[1].id}`)
             console.log(event.path[1].id)
-            db.collection('galerijaKategorije').doc(`${event.path[1].id}`).delete()
-            btnDiv.remove()            
+                if(confirm('Sigurno želiš da obišeš kategoriju?')) {
+                    if(confirm('100% siguran')) {
+                        if(confirm('Nema nazad!!!')) {
+                            db.collection('galerijaKategorije').doc(`${event.path[1].id}`).delete()
+                            btnDiv.remove() 
+                        }
+                    } else {
+                        return
+                    }
+                } else {
+                    return
+            }           
         })
     })
 })
-.then(function(){
+.then(function(){    
     let katBtns = document.querySelectorAll('.katDugmici')
+
     katBtns.forEach(btn => {
         btn.addEventListener('click', event => {
-            console.log('print')
-            console.log(event.path[1].id)
+            let progressBar = document.querySelector('.progressBar')
+            diffCounter++
+
+            if(diffCounter == 1) {
+                let uploadDiv = document.querySelector(`#${event.path[1].id}`)
+                console.log('print')
+                console.log(event.path[1].id)
+    
+                let dropInput = document.createElement('INPUT')
+    
+                dropInput.setAttribute('type', 'file')
+                dropInput.setAttribute('class', 'uploadGalery')
+                dropInput.setAttribute('id', `#${event.path[1].id}`)
+                dropInput.multiple = true
+                uploadDiv.appendChild(dropInput)
+
+                dropInput.addEventListener('change', event => {
+            
+                    let slika = event.target.files
+                
+                    if(slika.length >= 0) {
+                
+                        for(let i=0; i<slika.length; i++) {
+                
+                            let spanName = document.createElement('SPAN')
+                            let spanProgress = document.createElement('SPAN')
+            
+                            let slikaIme = event.target.files[i].name
+            
+                            let datum = new Date();
+                            let datumUbacivanja = new Date ( datum );
+                            datumUbacivanja.setMinutes ( new Date().getMinutes() - i );            
+                
+                            console.log(datum)
+                            console.log(datumUbacivanja)
+                
+                            toStorage = storage.ref(`${event.path[1].id}/${slikaIme}`)
+                            let uploadTask = toStorage.put(slika[i])
+                
+                            // Register three observers:
+                            // 1. 'state_changed' observer, called any time the state changes
+                            // 2. Error observer, called on failure
+                            // 3. Completion observer, called on successful completion
+                            uploadTask.on('state_changed', function(snapshot){
+                            // Observe state change events such as progress, pause, and resume
+                            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+                            progressBar.appendChild(spanName)              
+                            spanName.innerHTML = `${slika[i].name} `
+                            progressBar.appendChild(spanProgress)
+                            spanProgress.innerHTML = `${Math.round(progress)}%<br>`
+
+                            console.log('Upload is ' + progress + '% done');
+                            switch (snapshot.state) {
+                                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                                console.log('Upload is paused');
+                                break;
+                                case firebase.storage.TaskState.RUNNING: // or 'running'
+                                console.log('Upload is running');
+                                break;
+                            }
+                            }, function(error) {
+                            // Handle unsuccessful uploads
+                            }, function() {
+                            // Handle successful uploads on complete
+                            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                            uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                                console.log('File available at', downloadURL);
+                
+                                // let storageRef = storage.ref()
+                                let dodaj = {
+                                    name: slikaIme,
+                                    downLink: downloadURL,
+                                    datum: datumUbacivanja
+                                }
+                
+                                db.collection(`${event.path[1].id}`).doc(`${slikaIme}`).set(dodaj)
+                                
+                
+                                })
+                            
+                            });
+                        }
+                    }
+                })
+
+            } else {
+                let delInput = document.querySelector('.uploadGalery')
+                delInput.remove()
+                diffCounter = 0
+            }
+
         })
     })
 })
