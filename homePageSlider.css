@@ -1,0 +1,17 @@
+#containerLandingPage {
+    display: flex;
+    height: 80vh;
+}
+
+.slideHolder {
+    width: 850px;
+    height: 450px;
+    border-radius: 20px 0 20px 0;
+    margin: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    will-change: auto;
+    transition: background-image 1.2s ease-in-out;
+
+}
+

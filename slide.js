@@ -3,28 +3,6 @@ let slideImages = document.querySelector('.slideImages')
 let uploadInput = document.querySelector('.uploadInput')
 let inputForm = document.createElement('FORM')
 
-
-db.collection('imgSlide')
-.get()
-.then(snapshot => {
-    if(!snapshot.empty) {
-        let imgSlide = snapshot.docs
-        imgSlide.forEach(imgs => {
-            let slike = imgs.data()
-
-            slike.imgs.forEach(x => {
-                console.log(x)
-            })
-
-        })
-    }
-})
-.catch(error => {
-    console.log(`Došlo je do greške: ${error}`)
-});
-
-
-
 fileUpload.addEventListener('change', event => {
     // console.log(event.target.files)
     // console.log(event.target.files[0])
@@ -57,7 +35,13 @@ fileUpload.addEventListener('change', event => {
 
             let spanName = document.createElement('SPAN')
             let spanProgress = document.createElement('SPAN')
-            let slikaIme = event.target.files[i].name        
+            let slikaIme = event.target.files[i].name
+            let datum = new Date();
+            let datumUbacivanja = new Date ( datum );
+            datumUbacivanja.setMinutes ( new Date().getMinutes() - i );            
+
+            console.log(datum)
+            console.log(datumUbacivanja)
 
             toStorage = storage.ref(`slideImages/${slikaIme}`)
             let uploadTask = toStorage.put(slika[i])
@@ -91,38 +75,24 @@ fileUpload.addEventListener('change', event => {
             uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
                 console.log('File available at', downloadURL);
 
-                let storageRef = storage.ref() 
+                // let storageRef = storage.ref()
+                let dodaj = {
+                    name: slikaIme,
+                    downLink: downloadURL,
+                    datum: datumUbacivanja
+                }
+
+                db.collection('imgSlide').doc(`${slikaIme}`).set(dodaj)
                 
                 let imgHolder = document.createElement('DIV')
                 let downImg = document.createElement('IMG')
-                let inputNumb = document.createElement('INPUT')
-                let br = document.createElement('BR')
-
-                inputNumb.setAttribute('type', 'number')
-                inputNumb.style.width = '40px'
 
                 downImg.setAttribute('src', downloadURL)
                 downImg.setAttribute('width', '100px')
 
                 slideImages.appendChild(imgHolder)
                 imgHolder.appendChild(downImg)
-                imgHolder.appendChild(br)
-                imgHolder.appendChild(inputNumb)
 
-                let btnDel = document.createElement('button')
-                btnDel.innerHTML = "Obrisi"
-                btnDel.id = slika[i].name
-                imgHolder.appendChild(btnDel)
-
-                btnDel.addEventListener('click', event => {
-                    console.log(event.target.id)
-                    downImg.remove()
-                    let imeSlike = event.target.id
-                    let deleteRef = storageRef.child(`slideImages/${imeSlike}`)
-                    deleteRef.delete()
-                    
-                    })
-                
                 })
             
             });
@@ -131,6 +101,66 @@ fileUpload.addEventListener('change', event => {
 })
 
 function loadSlideImages() {
+    slideImages.innerHTML = ""
+
+    let storageRef = storage.ref()
+
+    db.collection('imgSlide')
+    .orderBy('datum', 'desc')
+    .get()
+    .then(snapshot => {
+        if(!snapshot.empty) {
+            let imgSlide = snapshot.docs
+            imgSlide.forEach((imgs, y) => {
+                
+                let links = imgs.data()
+                tmpimg = new Image()
+                tmpimg.src = links.downLink
+                
+                let btnDel = document.createElement('button')
+                let imgHolder = document.createElement('DIV')
+                let downImg = document.createElement('IMG')
+                let inputNumb = document.createElement('INPUT')
+                let br = document.createElement('BR')
+
+                inputNumb.setAttribute('type', 'number')
+                inputNumb.style.width = '40px'
+
+                downImg.setAttribute('src', tmpimg.src)
+                downImg.setAttribute('width', '100px')
+
+                slideImages.appendChild(imgHolder)
+                imgHolder.appendChild(downImg)
+                imgHolder.appendChild(br)
+                imgHolder.appendChild(inputNumb)
+
+
+                btnDel.innerHTML = "Obrisi"
+                btnDel.id = links.name
+                imgHolder.appendChild(btnDel)
+
+                btnDel.addEventListener('click', event => {
+                    console.log(event.target.id)
+                    let imeSlike = links.name
+                    let deleteRef = storageRef.child(`slideImages/${imeSlike}`)
+                    db.collection('imgSlide').doc(`${imeSlike}`).delete()
+                    deleteRef.delete()
+                    imgHolder.remove()
+                    btnDel.remove()
+                    inputNumb.remove()
+                })
+            })
+        }
+    })
+    .catch(error => {
+        console.log(`Došlo je do greške: ${error}`)
+    })
+
+}
+
+/*
+function loadSlideImages() {
+    slideImages.innerHTML = ""
 
     let storageRef = storage.ref() 
     // let listRef = storageRef.child('images')
@@ -160,6 +190,7 @@ function loadSlideImages() {
     itemRef.getDownloadURL().then(item => {
 
         console.log(itemRef.name)
+        let btnDel = document.createElement('button')
         let imgHolder = document.createElement('DIV')
         let downImg = document.createElement('IMG')
         let inputNumb = document.createElement('INPUT')
@@ -177,19 +208,21 @@ function loadSlideImages() {
         imgHolder.appendChild(inputNumb)
         console.log(item)
 
-        let btnDel = document.createElement('button')
+
         btnDel.innerHTML = "Obrisi"
         btnDel.id = itemRef.name
         imgHolder.appendChild(btnDel)
 
         btnDel.addEventListener('click', event => {
-          console.log(event.target.id)
-          downImg.remove()
-          let imeSlike = event.target.id
-          let deleteRef = storageRef.child(`slideImages/${imeSlike}`)
-          deleteRef.delete()
-         
-        })
+            console.log(event.target.id)
+            let imeSlike = event.target.id
+            let deleteRef = storageRef.child(`slideImages/${imeSlike}`)
+            db.collection('imgSlide').doc(`${imeSlike}`).delete()
+            deleteRef.delete()
+            imgHolder.remove()
+            btnDel.remove()
+            inputNumb.remove()
+          })
 
         })
     });
@@ -198,10 +231,8 @@ function loadSlideImages() {
     });
 
 }
+*/
 
-function zberiSlike() {
-
-}
 
 
 // uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {

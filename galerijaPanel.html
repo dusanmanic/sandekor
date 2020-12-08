@@ -13,7 +13,7 @@
         <ul>
             <li><button class="headerBtns" onclick="location.href = 'index.html';">POČETNA</button></li>
             <li><button class="headerBtns" onclick="location.href = 'slide.html';">Slide</button></li>
-            <li><button class="headerBtns" onclick="">Galerija</button></li>
+            <li><button class="headerBtns" onclick="location.href = 'galerijaPanel.html'">Galerija</button></li>
             <li><button class="headerBtns" onclick="">PRODAJA</button></li>
             <li><button class="headerBtns" onclick="">VIDEO</button></li>
             <li><button class="headerBtns" onclick="">SARADNICI</button></li>
@@ -29,7 +29,12 @@
     </header>
 
     <div id="container">
+        <button onclick="showHideDelBtn()">del btn</button>
+        <button class="dodajKategoriju" onclick="dodajGaleriju()">Dodaj kategoriju</button>
+        <input type="text" id="kategorijaInput"><br>
+        <div class="kategorijeDiv">
 
+        </div>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -57,5 +62,6 @@
     </script>
     <script src="panel.js"></script>
     <script src="script.js"></script>
+    <script src="galerijaPanel.js"></script>
 </body>
 </html>
