@@ -7,8 +7,25 @@
 }
 
 .holderDiv {
+    display: flex;
     width: 150px;
     height: 100px;
-    background-color: black;
     margin: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    margin: 5px;
 }
+
+.slikaDiv {
+    width: 150px;
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    margin: 5px;
+}
+
+/* .dugmeBtn {
+    margin: auto;
+} */
