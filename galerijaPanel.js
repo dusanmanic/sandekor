@@ -11,6 +11,7 @@ db.collection('galerijaKategorije')
         let allDocs = snapshot.docs
         allDocs.forEach(x => {
             let kategorije = x.data()
+            // let kategorijeID = x.id
             
             let nameCategory = kategorije.name.charAt(0).toUpperCase() + kategorije.name.slice(1)
             let btnsDiv = document.createElement('DIV')
@@ -37,18 +38,22 @@ db.collection('galerijaKategorije')
         btn.addEventListener('click', event => {
             let btnDiv = document.querySelector(`#${event.path[1].id}`)
             console.log(event.path[1].id)
-                if(confirm('Sigurno želiš da obišeš kategoriju?')) {
-                    if(confirm('100% siguran')) {
-                        if(confirm('Nema nazad!!!')) {
-                            db.collection('galerijaKategorije').doc(`${event.path[1].id}`).delete()
-                            btnDiv.remove() 
-                        }
-                    } else {
-                        return
-                    }
-                } else {
-                    return
-            }           
+            db.collection(`${event.path[1].id}`)
+            .get()
+            .then(snapshot => {
+                if(!snapshot.empty) {
+                    let allDocs = snapshot.docs
+                    allDocs.forEach(x => {
+                        let kategorijeId = x.id
+                        db.collection(`${event.path[1].id}`).doc(`${kategorijeId}`).delete()
+                        console.log(kategorijeId)                      
+                    })
+                }
+            })
+            
+            db.collection('galerijaKategorije').doc(`${event.path[1].id}`).delete()
+            btnDiv.remove() 
+           
         })
     })
 })
@@ -134,9 +139,13 @@ db.collection('galerijaKategorije')
                                     datum: datumUbacivanja
                                 }
                 
-                                db.collection(`${event.path[1].id}`).doc(`${slikaIme}`).set(dodaj)
+                                db.collection(`${event.path[1].id}`).doc(`${slikaIme}`).set(dodaj)       
                                 
-                
+                                let tumb = {
+                                    tumbUrl: downloadURL
+                                }
+
+                                db.collection('galerijaKategorije').doc(`${event.path[1].id}`).update(tumb)  
                                 })
                             
                             });

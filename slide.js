@@ -144,6 +144,7 @@ function loadSlideImages() {
                     let imeSlike = links.name
                     let deleteRef = storageRef.child(`slideImages/${imeSlike}`)
                     db.collection('imgSlide').doc(`${imeSlike}`).delete()
+                    
                     deleteRef.delete()
                     imgHolder.remove()
                     btnDel.remove()

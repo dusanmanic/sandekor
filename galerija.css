@@ -1,12 +1,15 @@
 #containerGalerija {
-    width: 800px;
-    height: 500px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: flex;  
 }
 
-.holderDiv {
+.imageHolder {
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.holderImg {
     display: flex;
     width: 150px;
     height: 100px;
@@ -17,7 +20,7 @@
     margin: 5px;
 }
 
-.slikaDiv {
+.slikaImg {
     width: 150px;
     height: 100px;
     background-size: cover;
@@ -26,6 +29,35 @@
     margin: 5px;
 }
 
-/* .dugmeBtn {
+.popUpDiv {
+    display: flex;
+    width: 100vw;
+    height: 70vh;
+}
+
+.slikaVeca {
+    width: 80vw;
+    height: 60vh;
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: auto;
-} */
+    border-radius: 20px 0 20px 0;
+}
+
+.delBtnImg {
+    width: 70px;
+    height: 20px;
+}
+.frameDiv {
+    width: 160px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tumbDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
