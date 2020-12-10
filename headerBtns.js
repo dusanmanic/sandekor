@@ -22,9 +22,13 @@ responseButton.appendChild(responseLi)
 // console.log(window.innerWidth)
 // console.log(counterShowHide)
 
-if(window.innerHeight > 455) {
-    // console.log('jeste')
-    // console.log(window.innerHeight > 455)
+// let w = window.innerWidth
+// console.log(window.Width > 455)
+// console.log(w)
+
+if(w < 455) {
+    console.log('jeste')
+    
     document.body.addEventListener('click', event => {
         console.log(event.path[0].id)
         let btnId = event.path[0].id
