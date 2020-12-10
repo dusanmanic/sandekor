@@ -22,7 +22,7 @@ responseButton.appendChild(responseLi)
 
 let w = window.innerWidth
 
-if(w < 455) {
+if(w < 600) {
     console.log('jeste')    
     document.body.addEventListener('click', event => {
         // console.log(event.path[0].id)
