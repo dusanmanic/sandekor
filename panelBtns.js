@@ -20,9 +20,7 @@ responseButton.appendChild(responseLi)
 // console.log(window.innerWidth)
 // console.log(counterShowHide)
 
-// let w = window.innerWidth
-// console.log(window.Width > 455)
-// console.log(w)
+let w = window.innerWidth
 
 if(w < 455) {
     console.log('jeste')
