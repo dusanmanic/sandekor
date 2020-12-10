@@ -84,15 +84,41 @@ db.collection('galerijaKategorije')
                                 if(counterPopUpImg === 1) {
                                     console.log(counterPopUpImg)
                                     imageHolder.style.display = 'none'
-                                    let klikSlika = document.createElement('img')
+                                    // let klikDiv = document.createElement('IMG')
+                                    let klikImg = new Image()
+                                    klikImg.src = event.target.currentSrc
+                                    
+                                    curWidth = klikImg.width
+                                    console.log(curWidth)
+                                    curHeight = klikImg.height
+                                    console.log(curHeight)
+
                                     let popUpDiv = document.createElement('DIV')
                                     popUpDiv.setAttribute('class', 'popUpDiv')
                                     containerGalerija.appendChild(popUpDiv)
-                                    klikSlika.setAttribute('src', event.target.currentSrc)
-                                    klikSlika.setAttribute('class', 'slikaVeca')
-                                    popUpDiv.appendChild(klikSlika)
+                                    // klikDiv.style.backgroundImage = `url('${event.target.currentSrc}')`
+                                    klikImg.setAttribute('class', 'slikaVeca')
+                                    popUpDiv.appendChild(klikImg)
+                                    
+
+                                    if(curWidth > curHeight) {
+
+                                        if(window.innerWidth > window.innerHeight) {
+                                            let sirina = window.innerHeight - window.innerHeight * 30 / 100
+                                            let sirinaSlike = sirina * 1.5
+                                            klikImg.setAttribute('width', `${sirinaSlike}px`)
+                                        } else {
+                                            let visina = window.innerWidth - window.innerWidth * 20 / 100
+                                            let visinaSlike = visina / 1.5
+                                            klikImg.setAttribute('height', `${visinaSlike}px`) 
+                                            console.log('print')
+                                        }
+
+                                    }
+
+                                    
                   
-                                    klikSlika.addEventListener('click', event => {
+                                    klikImg.addEventListener('click', event => {
                                         counterPopUpImg++
                                         if(counterPopUpImg === 2) {
                                             // popUpDiv.innerText = ""
@@ -103,7 +129,7 @@ db.collection('galerijaKategorije')
                                         }   
                                     })
                                 }
-                            })
+                        })
                         
 
                     })
@@ -112,3 +138,42 @@ db.collection('galerijaKategorije')
         })
     })
 })
+
+
+/*
+                        slikaImg.addEventListener('click', event => {
+                            counterPopUpImg++
+                                console.log(event.target.currentSrc)
+
+                                if(counterPopUpImg === 1) {
+                                    console.log(counterPopUpImg)
+                                    imageHolder.style.display = 'none'
+                                    // let klikDiv = document.createElement('IMG')
+                                    let klikDiv = new Image()
+                                    klikDiv.src = event.target.currentSrc
+                                    
+                                    curWidth = klikDiv.width
+                                    console.log(curWidth)
+                                    curHeight = klikDiv.height
+                                    console.log(curHeight)
+
+                                    let popUpDiv = document.createElement('DIV')
+                                    popUpDiv.setAttribute('class', 'popUpDiv')
+                                    containerGalerija.appendChild(popUpDiv)
+                                    // klikDiv.style.backgroundImage = `url('${event.target.currentSrc}')`
+                                    klikDiv.setAttribute('class', 'slikaVeca')
+                                    popUpDiv.appendChild(klikDiv)
+                  
+                                    klikDiv.addEventListener('click', event => {
+                                        counterPopUpImg++
+                                        if(counterPopUpImg === 2) {
+                                            // popUpDiv.innerText = ""
+                                            // popUpDiv.style.display = 'none'
+                                            popUpDiv.remove()
+                                            imageHolder.style.display = ""
+                                            counterPopUpImg = 0
+                                        }   
+                                    })
+                                }
+                        })
+                        */
