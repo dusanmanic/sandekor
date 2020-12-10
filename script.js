@@ -92,12 +92,12 @@ function logout () {
                     localStorage.removeItem('btns')
 
                     checker()
-                    window.location.href = "./login/login.html"
                     
                 }
             })
         }
     })
+
     .catch(error => {
         console.log(`Došlo je do greške: ${error}`)
     });
