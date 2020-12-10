@@ -1,17 +1,31 @@
 #containerLandingPage {
     display: flex;
-    height: 80vh;
+    width: 100vw;
+    height: 89vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    will-change: auto;
+    transition: background-image 1.2s ease-in-out;
 }
 
+
 .slideHolder {
-    width: 850px;
-    height: 450px;
-    border-radius: 20px 0 20px 0;
+    width: 100vw;
+    height: 89vh;
+    /* border-radius: 20px 0 20px 0; */
     margin: auto;
     background-size: cover;
     background-repeat: no-repeat;
     will-change: auto;
     transition: background-image 1.2s ease-in-out;
-
 }
 
+@media only screen and (max-width: 455px){
+
+    #containerLandingPage {
+        display: flex;
+        width: 100vw;
+        height: 93vh;
+    }
+
+}

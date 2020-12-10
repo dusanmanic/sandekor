@@ -80,5 +80,14 @@ function logging() {
     });
 }
 
+function btnsShowHide() {
+    counterShowHide++
+    if(counterShowHide === 1) {
+        counterShowHide = 0
+        document.querySelector('.headBtns').style.display = "flex"
+        document.querySelector('.responseBtn').style.display = "none"
+
+    }
+}
 // Ubaciti u skriptu
 //checker()

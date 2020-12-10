@@ -1,8 +1,9 @@
 let containerLandingPage = document.getElementById('containerLandingPage')
 let slideHolder = document.createElement('DIV')
 slideHolder.classList.add('slideHolder')
+slideHolder.classList.add('containerResponse')
 
-containerLandingPage.appendChild(slideHolder)
+//containerLandingPage.appendChild(slideHolder)
 
 let niz = []
 let brojacNiz = 0
@@ -17,8 +18,7 @@ db.collection('imgSlide')
         imgSlide.forEach((imgs, y) => {
             let tmpimg = new Image()
             let links = imgs.data()
-            //console.log(links.downLink, y)
-            
+            //console.log(links.downLink, y)          
             
             tmpimg.src = `${links.downLink}`
 
@@ -33,7 +33,7 @@ db.collection('imgSlide')
     for(let i=0; i<niz.length; i++) {
 
         setTimeout(() => {            
-            slideHolder.style.backgroundImage = `url('${niz[i].src}')`
+            containerLandingPage.style.backgroundImage = `url('${niz[i].src}')`
         },3300 * i)
     }
 })
