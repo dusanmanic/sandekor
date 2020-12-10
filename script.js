@@ -45,10 +45,10 @@ function checker() {
                         document.body.style.display = "block"
                         console.log(`Korisnik je logovan`)
                     } else {
-                        window.location.href = '..login/login.html'
+                        window.location.href = './login/login.html'
                     }
                 } else if(trenutniUser == null)  {
-                    window.location.href = '../login/login.html'
+                    window.location.href = './login/login.html'
                 }
             })
         }
@@ -92,7 +92,7 @@ function logout () {
             })
         }
         checker()
-        window.location.href = "adminpanel.html"
+        window.location.href = "./login/login.html"
     })
     .catch(error => {
         console.log(`Došlo je do greške: ${error}`)

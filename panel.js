@@ -22,10 +22,10 @@ function checker() {
                      if(userInfo.log) {
                         document.body.style.display = "block"
                     } else {
-                        window.location.href = '..login/login.html'
+                        window.location.href = './login/login.html'
                     }
                 } else if(trenutniUser == null)  {
-                    window.location.href = '../login/login.html'
+                    window.location.href = './login/login.html'
                 }
             })
         }

@@ -1,8 +1,8 @@
 let headBtns = document.querySelector('.headBtns')
-
+let responseButton = document.querySelector('.responseButton')
 let nizBtns = ['POČETNA', 'slide','galerija', 'prodaja', 'video', 'saradnici', 'reference']
 let nizHref = ['index', 'slide', 'galerijaPanel', 'prodajaPanel', 'videoPanel', 'saradniciPanel', 'referencePanel']
-
+let counterShowHide = 0
 
 for(let i=0; i<nizBtns.length; i++) {
     

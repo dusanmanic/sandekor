@@ -16,16 +16,24 @@ for(let i=0; i<nizBtns.length; i++) {
 }
 
 let responseLi = document.createElement('LI')
-responseLi.innerHTML = `<button class="menuBtn responseBtn" onclick="btnsShowHide()">MENU</button>`
+responseLi.innerHTML = `<button class="menuBtn  responseBtn" id="menuBtn">MENU</button>`
 responseButton.appendChild(responseLi)
 
+document.body.addEventListener('click', event => {
+    console.log(event.path[0].id)
+    let btnId = event.path[0].id
+    if(btnId.includes('menuBtn')) {
+        counterShowHide++
+        if(counterShowHide === 1) {
+            counterShowHide = 0
+            document.querySelector('.headBtns').style.display = "flex"
+            document.querySelector('.responseBtn').style.display = "none"
 
-function btnsShowHide() {
-    counterShowHide++
-    if(counterShowHide === 1) {
-        counterShowHide = 0
-        document.querySelector('.headBtns').style.display = "flex"
-        document.querySelector('.responseBtn').style.display = "none"
+        }           
 
+    } else {
+        document.querySelector('.headBtns').style.display = "none"
+        document.querySelector('.responseBtn').style.display = "block"
     }
-}
+        
+})
