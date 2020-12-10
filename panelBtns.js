@@ -14,7 +14,7 @@ for(let i=0; i<nizBtns.length; i++) {
 }
 
 let responseLi = document.createElement('LI')
-responseLi.innerHTML = `<button class="menuBtn responseBtn" onclick="btnsShowHide()">MENU</button>`
+responseLi.innerHTML = `<button class="menuBtn responseBtn" id="menuBtn">MENU</button>`
 responseButton.appendChild(responseLi)
 
 // console.log(window.innerWidth)
@@ -23,14 +23,13 @@ responseButton.appendChild(responseLi)
 let w = window.innerWidth
 
 if(w < 455) {
-    console.log('jeste')
-    
+    console.log('jeste')    
     document.body.addEventListener('click', event => {
-        console.log(event.path[0].id)
+        // console.log(event.path[0].id)
         let btnId = event.path[0].id
         //console.log(window.innerHeight)
         //console.log(window.innerWidth)
-        if(btnId.includes('menuBtn')) {
+        if(btnId.includes('menuBtn')) {            
             counterShowHide++
             if(counterShowHide === 1) {
                 counterShowHide = 0

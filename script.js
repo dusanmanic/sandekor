@@ -59,10 +59,6 @@ function checker() {
 }
 
 function logout () {
-    localStorage.removeItem('curT')
-    localStorage.removeItem('curentUser')
-    localStorage.removeItem('btns')
-
     logOut.classList.add("removeLi")
     panel.classList.add("removeLi")
     login.classList.remove("removeLi")
@@ -76,23 +72,31 @@ function logout () {
             login_info.forEach(user => {
                 let userInfo = user.data()
                 
-                datum = new Date (),
-                datumProvera = new Date ( datum );
-                datumProvera.setMinutes ( new Date().getMinutes() + 30 );
+                datum = new Date ();
+                // datumProvera = new Date ( datum );
+                // datumProvera.setMinutes ( new Date().getMinutes() + 30 );
+                console.log(localStorage.getItem('curentUser') === userInfo.information.user)
+                console.log(userInfo.information.user)
 
                 if(localStorage.getItem('curentUser') === userInfo.information.user) {
-
+                    console.log('ulaziOvde')
                     let datum = new Date();
                     let update = {
-                        logged_in: firebase.firestore.Timestamp.fromDate(datum),
+                        logged_out: firebase.firestore.Timestamp.fromDate(datum),
                         log: false
                     }
                     db.collection('login_info').doc(`${userInfo.information.user}`).update(update)
+
+                    localStorage.removeItem('curT')
+                    localStorage.removeItem('curentUser')
+                    localStorage.removeItem('btns')
+
+                    checker()
+                    window.location.href = "./login/login.html"
+                    
                 }
             })
         }
-        checker()
-        window.location.href = "./login/login.html"
     })
     .catch(error => {
         console.log(`Došlo je do greške: ${error}`)

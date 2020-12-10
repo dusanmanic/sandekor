@@ -26,6 +26,12 @@ function checker() {
                     }
                 } else if(trenutniUser == null)  {
                     window.location.href = './login/login.html'
+                } else if (trenutniUser === userInfo.information.user && trenutniToken !== userInfo.token) {
+                    localStorage.removeItem('curT')
+                    localStorage.removeItem('curentUser')
+                    localStorage.removeItem('btns')
+                    window.location.href = './login/login.html'
+                    
                 }
             })
         }

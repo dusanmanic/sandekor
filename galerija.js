@@ -95,8 +95,9 @@ db.collection('galerijaKategorije')
                                     klikSlika.addEventListener('click', event => {
                                         counterPopUpImg++
                                         if(counterPopUpImg === 2) {
-                                                popUpDiv.innerText = ""
-                                            popUpDiv.style.display = 'none'
+                                            // popUpDiv.innerText = ""
+                                            // popUpDiv.style.display = 'none'
+                                            popUpDiv.remove()
                                             imageHolder.style.display = ""
                                             counterPopUpImg = 0
                                         }   

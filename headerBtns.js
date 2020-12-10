@@ -4,15 +4,13 @@ let nizBtns = ['POČETNA', 'O NAMA', 'GALERIJA', 'PRODAJA', 'VIDEO', 'SARADNICI'
 let nizHref = ['index', 'onama', 'galerija', 'prodaja', 'video', 'saradnici', 'reference', 'kontakt']
 let counterShowHide = 0
 
-
 for(let i=0; i<nizBtns.length; i++) {
     
     let btnLi = document.createElement('LI')
 
     btnLi.innerHTML = `<button class="headerBtns" onclick="location.href = '${nizHref[i]}.html';">${nizBtns[i]}</button>`
 
-    headBtns.appendChild(btnLi)
-    
+    headBtns.appendChild(btnLi)    
 }
 
 let responseLi = document.createElement('LI')
@@ -25,10 +23,9 @@ responseButton.appendChild(responseLi)
 let w = window.innerWidth
 
 if(w < 455) {
-    console.log('jeste')
-    
+    console.log('jeste')    
     document.body.addEventListener('click', event => {
-        console.log(event.path[0].id)
+        // console.log(event.path[0].id)
         let btnId = event.path[0].id
         //console.log(window.innerHeight)
         //console.log(window.innerWidth)
