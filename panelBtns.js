@@ -17,13 +17,29 @@ let responseLi = document.createElement('LI')
 responseLi.innerHTML = `<button class="menuBtn responseBtn" onclick="btnsShowHide()">MENU</button>`
 responseButton.appendChild(responseLi)
 
+// console.log(window.innerWidth)
+// console.log(counterShowHide)
 
-function btnsShowHide() {
-    counterShowHide++
-    if(counterShowHide === 1) {
-        counterShowHide = 0
-        document.querySelector('.headBtns').style.display = "flex"
-        document.querySelector('.responseBtn').style.display = "none"
-
-    }
+if(window.innerHeight > 455) {
+    // console.log('jeste')
+    // console.log(window.innerHeight > 455)
+    document.body.addEventListener('click', event => {
+        console.log(event.path[0].id)
+        let btnId = event.path[0].id
+        //console.log(window.innerHeight)
+        //console.log(window.innerWidth)
+        if(btnId.includes('menuBtn')) {
+            counterShowHide++
+            if(counterShowHide === 1) {
+                counterShowHide = 0
+                document.querySelector('.headBtns').style.display = "flex"
+                document.querySelector('.responseBtn').style.display = "none"    
+            }           
+    
+        } else {
+            document.querySelector('.headBtns').style.display = "none"
+            document.querySelector('.responseBtn').style.display = "block"
+        }
+            
+    })
 }

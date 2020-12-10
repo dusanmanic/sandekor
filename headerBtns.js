@@ -19,7 +19,12 @@ let responseLi = document.createElement('LI')
 responseLi.innerHTML = `<button class="menuBtn  responseBtn" id="menuBtn">MENU</button>`
 responseButton.appendChild(responseLi)
 
-if(window.innerHeight < 445) {
+// console.log(window.innerWidth)
+// console.log(counterShowHide)
+
+if(window.innerHeight > 455) {
+    // console.log('jeste')
+    // console.log(window.innerHeight > 455)
     document.body.addEventListener('click', event => {
         console.log(event.path[0].id)
         let btnId = event.path[0].id
@@ -30,8 +35,7 @@ if(window.innerHeight < 445) {
             if(counterShowHide === 1) {
                 counterShowHide = 0
                 document.querySelector('.headBtns').style.display = "flex"
-                document.querySelector('.responseBtn').style.display = "none"
-    
+                document.querySelector('.responseBtn').style.display = "none"    
             }           
     
         } else {
