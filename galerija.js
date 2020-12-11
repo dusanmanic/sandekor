@@ -104,16 +104,15 @@ db.collection('galerijaKategorije')
                                     if(curWidth > curHeight) {
 
                                         if(window.innerWidth > window.innerHeight) {
+                                            console.log('print')
 
-                                            let sirina = window.innerHeight - window.innerHeight * 30 / 100
-                                            let sirinaSlike = sirina * 1.5
+                                            let visina = window.innerHeight - window.innerHeight * 7 / 100
+                                            let sirinaSlike = visina * 1.5
+                                            klikImg.setAttribute('height', `${visina}px`)
                                             klikImg.setAttribute('width', `${sirinaSlike}px`)
                                             klikImg.setAttribute('class', 'slikaVeca')
 
                                         } else if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ){
-
-                                            // let visina = screen.width - screen.width * 20 / 100
-                                            // let visinaSlike = visina / 1.5
 
                                             let visinaSlike = screen.width / 1.5
                                             klikImg.setAttribute('height', `${visinaSlike}px`) 
@@ -121,11 +120,11 @@ db.collection('galerijaKategorije')
 
                                         } else {
 
-                                            let visina = window.innerWidth - window.innerWidth * 20 / 100
-                                            let visinaSlike = visina / 1.5
+                                            let visina = window.innerWidth - window.innerWidth * 7 / 100
+                                            let sirinaSlike = visina / 1.5
                                             klikImg.setAttribute('height', `${visinaSlike}px`)
+                                            klikImg.setAttribute('width', `${sirinaSlike}px`)
                                             klikImg.setAttribute('class', 'slikaVeca')
-
                                         }
 
                                     } else {
@@ -145,10 +144,16 @@ db.collection('galerijaKategorije')
 
                                             klikImg.setAttribute('width', `${screen.width}px`) 
                                             klikImg.setAttribute('height', `${visinaSlike}px`) 
-                                            klikImg.setAttribute('class', 'mobSlikaVeca')
-                                            console.log('print')
-                                                                                                                      
+                                            klikImg.setAttribute('class', 'mobSlikaVeca')                                                                                                                      
                                         
+                                        } else {
+                                            
+                                            let visina = window.innerHeight - window.innerHeight * 7 / 100
+                                            let sirinaSlike = visina / 1.5
+                                            klikImg.setAttribute('width', `${sirinaSlike}px`)
+                                            klikImg.setAttribute('height', `${visina}px`)
+                                            klikImg.setAttribute('class', 'slikaVeca')
+
                                         }
                                     }                            
                   

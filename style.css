@@ -10,7 +10,7 @@ body {
 
 header {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     display: flex;
     width: 100vw;
     height: 7vh;
@@ -22,15 +22,6 @@ header {
     flex-direction: row;
     margin: auto;
 }
-
-/* footer {
-    width: 100vw;
-    height: 4vh;
-    background-color: rgb(0, 0, 0, 0.5);
-    position: absolute;
-    bottom: 0;
-    padding: auto;
-} */
 
 ul {
     margin: 0;
@@ -73,17 +64,10 @@ li {
     cursor: pointer;
 }
 
-.headerBtns:hover, .menuBtn:hover {
+.headerBtns:focus:hover, .menuBtn:focus:hover {
     -webkit-transform: scale(1.1);
-}
-
-.headerBtns:focus, .menuBtn:hover {
     outline: none;
-}
-
-#container, #container {
-    width: 100vw;
-    height: 76vh;
+    background: none;
 }
 
 .spanDesno {
@@ -102,18 +86,6 @@ li {
     font-size: 15px;
 }
 
-.classKontakt {
-    width: 800px;
-    height: 76vh;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-}
 
 .logInBtn {
     color: black;
@@ -124,13 +96,6 @@ li {
 .redirect {
     color: black;
     font-size: 50px;
-}
-
-.classInput {
-    background-color: red;
-    border-radius: 12px;
-    width: 400px;
-    height: 500px;
 }
 
 .removeLi {
@@ -174,7 +139,6 @@ li {
         align-items: center;
         justify-content: space-around;
         flex-direction: column;
-
         background-color: rgba(106, 106, 106);
     }
 
@@ -183,15 +147,32 @@ li {
         display: block;
     }
 
-    .responseBtn {
-        display: block;
-    }
-    
-    /* .responseBtnsShowHide {
-        display: none;
-    } */
-
     footer {
         display: none;
+    }
+
+    .hoverBtns {
+        display: none;
+        height: 280px;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        background-color: rgb(0, 0, 0, 0.5);
+
+
+    }
+
+    .responseBtn:focus:hover:active, .headerBtns:focus:hover:active {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .hoverDiv{
+        display: none;
+        width: 100vw;
+        height: 280px;
+        position: absolute;
+        z-index: 50;
+        transition-property: all;
+        transition-duration: .5s;          
     }
 }

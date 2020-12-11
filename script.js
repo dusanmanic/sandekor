@@ -102,3 +102,8 @@ function logout () {
         console.log(`Došlo je do greške: ${error}`)
     });
 }
+
+// window.addEventListener('resize', event => {
+//     console.log(window.innerHeight)
+//     console.log(window.innerWidth)
+// })

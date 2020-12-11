@@ -155,7 +155,7 @@ btnsLoadSlideImages.forEach(btn => {
         })
     })
 })
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 fileUpload.addEventListener('change', event => {
     // console.log(event.target.files)

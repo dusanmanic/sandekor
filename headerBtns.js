@@ -1,5 +1,15 @@
+let heder = document.querySelector('header')
 let headBtns = document.querySelector('.headBtns')
 let responseButton = document.querySelector('.responseButton')
+let btnsDiv = document.createElement('DIV')
+let btnsUl = document.createElement('UL')
+
+heder.parentNode.insertBefore(btnsDiv, heder.nextSibling)
+
+btnsDiv.classList.add('hoverDiv')
+btnsUl.classList.add('hoverBtns')
+btnsDiv.appendChild(btnsUl)
+
 let nizBtns = ['POČETNA', 'O NAMA', 'GALERIJA', 'PRODAJA', 'VIDEO', 'SARADNICI', 'REFERENCE', 'KONTAKT']
 let nizHref = ['index', 'onama', 'galerija', 'prodaja', 'video', 'saradnici', 'reference', 'kontakt']
 let counterShowHide = 0
@@ -10,7 +20,13 @@ for(let i=0; i<nizBtns.length; i++) {
 
     btnLi.innerHTML = `<button class="headerBtns" onclick="location.href = '${nizHref[i]}.html';">${nizBtns[i]}</button>`
 
-    headBtns.appendChild(btnLi)    
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        btnsUl.appendChild(btnLi)
+
+    } else {
+        headBtns.appendChild(btnLi) 
+    }
+   
 }
 
 let responseLi = document.createElement('LI')
@@ -18,28 +34,32 @@ responseLi.innerHTML = `<button class="menuBtn  responseBtn" id="menuBtn">MENU</
 responseButton.appendChild(responseLi)
 
 // console.log(window.innerWidth)
-// console.log(counterShowHide)
 
 let w = window.innerWidth
 
 if(w < 455) {
-    console.log('jeste')    
-    document.body.addEventListener('click', event => {
+    console.log('jeste')
+    console.log(counterShowHide)
+    heder.addEventListener('click', event => {
+        console.log(event)
         // console.log(event.path[0].id)
         let btnId = event.path[0].id
         //console.log(window.innerHeight)
         //console.log(window.innerWidth)
         if(btnId.includes('menuBtn')) {
             counterShowHide++
-            if(counterShowHide === 1) {
+
+            if(counterShowHide === 1) {   
+                console.log(counterShowHide)             
+                document.querySelector('.hoverBtns').style.display = "flex"    
+                document.querySelector('.hoverDiv').style.display = "block"    
+            } else if (counterShowHide === 2)  {
+                console.log(counterShowHide)
+                document.querySelector('.hoverBtns').style.display = "none"
+                document.querySelector('.hoverDiv').style.display = "none"
                 counterShowHide = 0
-                document.querySelector('.headBtns').style.display = "flex"
-                document.querySelector('.responseBtn').style.display = "none"    
-            }           
+            }       
     
-        } else {
-            document.querySelector('.headBtns').style.display = "none"
-            document.querySelector('.responseBtn').style.display = "block"
         }
             
     })
