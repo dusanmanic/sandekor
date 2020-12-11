@@ -1,15 +1,26 @@
 let containerLandingPage = document.getElementById('containerLandingPage')
 let slideHolder = document.createElement('DIV')
+containerLandingPage.appendChild(slideHolder)
 slideHolder.classList.add('slideHolder')
 slideHolder.classList.add('containerResponse')
+//slideHolder.style.width = `${containerLandingPage.offsetWidth}px`
+//slideHolder.style.height = `${containerLandingPage.offsetHeight}px`
+slideHolder.style.width = '100vw'
 
-//containerLandingPage.appendChild(slideHolder)
-
+let pcmobView
 let niz = []
 let brojacNiz = 0
 
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    console.log('mobilni')
+    pcmobView = 'imgSlideMob'
+} else {
+    console.log('desktop')
+    pcmobView = 'imgSlide'
+}
 
-db.collection('imgSlide')
+
+db.collection(`${pcmobView}`)
 .orderBy('datum', 'desc')
 .get()
 .then(snapshot => {
@@ -33,7 +44,7 @@ db.collection('imgSlide')
     for(let i=0; i<niz.length; i++) {
 
         setTimeout(() => {            
-            containerLandingPage.style.backgroundImage = `url('${niz[i].src}')`
+            slideHolder.style.backgroundImage = `url('${niz[i].src}')`
         },3300 * i)
     }
 })

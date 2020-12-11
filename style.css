@@ -1,4 +1,6 @@
 body {
+    width: 100vw;
+    height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
     margin: 0;
@@ -21,14 +23,14 @@ header {
     margin: auto;
 }
 
-footer {
+/* footer {
     width: 100vw;
     height: 4vh;
     background-color: rgb(0, 0, 0, 0.5);
     position: absolute;
     bottom: 0;
     padding: auto;
-}
+} */
 
 ul {
     margin: 0;
@@ -136,7 +138,7 @@ li {
 }
 #loginContainer {
     width: 100vw;
-    height: 80vh;
+    height: 93vh;
     display: flex;
 }
 .loginDiv {

@@ -1,6 +1,6 @@
 #containerGalerija {
     width: 100vw;
-    height: 88vh;
+    height: 93vh;
     display: flex;
 }
 
@@ -43,8 +43,12 @@
 .slikaVeca {
     margin: auto;
     border-radius: 20px 0 20px 0;
-
 }
+
+/* .mobSlikaVeca {
+    background-size: contain;
+    background-repeat: no-repeat;
+} */
 
 .delBtnImg {
     width: 70px;

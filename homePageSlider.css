@@ -1,7 +1,7 @@
 #containerLandingPage {
     display: flex;
     width: 100vw;
-    height: 89vh;
+    height: 93vh;
     background-size: cover;
     background-repeat: no-repeat;
     will-change: auto;
@@ -10,10 +10,8 @@
 
 
 .slideHolder {
-    width: 100vw;
-    height: 89vh;
     /* border-radius: 20px 0 20px 0; */
-    margin: auto;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     will-change: auto;

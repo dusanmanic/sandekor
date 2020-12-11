@@ -27,10 +27,17 @@
 
     <div id="containerSlide">
         <div class="uploadInput">
-            <span>Učitaj fotografije</span>
-            <button class="loadSlideImages" onclick="loadSlideImages()">Load images</button><br>
-            <span>Izaberi fotografije</span>
-            <input type="file" name="fileUpload" id="fileUpload" multiple><br>
+            <span>Učitaj fotografije
+            <button class="loadSlideImages" id="imgSlide">Desktop</button>
+            <button class="loadSlideImages" id="imgSlideMob">Mobilni</button> pregled</span><br>
+
+            <label for="kategorija"><span>Izaberi kategoriju:</span></label>
+                <select id="kategorija" name="kategorija" onchange="kategorija()">
+                  <option value="none" selected disabled hidden>Izaberi Opciju</option>
+                  <option value="imgSlide">Desktop</option>
+                  <option value="imgSlideMob">Mobilni</option>
+                </select>
+            <input type="file" class="removeLi" name="fileUpload" id="fileUpload" multiple><br>
         </div>
         <div class="slideImages">
 

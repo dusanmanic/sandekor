@@ -114,6 +114,7 @@ db.collection('galerijaKategorije')
 
                                             // let visina = screen.width - screen.width * 20 / 100
                                             // let visinaSlike = visina / 1.5
+
                                             let visinaSlike = screen.width / 1.5
                                             klikImg.setAttribute('height', `${visinaSlike}px`) 
                                             klikImg.setAttribute('class', 'mobSlikaVeca')
@@ -127,7 +128,29 @@ db.collection('galerijaKategorije')
 
                                         }
 
-                                    }                                   
+                                    } else {
+
+                                        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ){
+
+                                            // let visina = screen.width - screen.width * 20 / 100
+                                            // let visinaSlike = visina / 1.5
+                                            let visinaSlike = screen.width * 1.5
+
+                                            // console.log(`${screen.width}px`)
+                                            // console.log(`${screen.height}px`)
+                                            // console.log(`${containerGalerija.offsetWidth}px`)
+                                            // console.log(`${containerGalerija.clientWidth}px`)
+                                            // console.log(`${containerGalerija.offsetHeight}px`)
+                                            // console.log(`${containerGalerija.clientHeight}px`)
+
+                                            klikImg.setAttribute('width', `${screen.width}px`) 
+                                            klikImg.setAttribute('height', `${visinaSlike}px`) 
+                                            klikImg.setAttribute('class', 'mobSlikaVeca')
+                                            console.log('print')
+                                                                                                                      
+                                        
+                                        }
+                                    }                            
                   
                                     klikImg.addEventListener('click', event => {
                                         counterPopUpImg++
