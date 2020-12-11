@@ -97,7 +97,7 @@ db.collection('galerijaKategorije')
                                     popUpDiv.setAttribute('class', 'popUpDiv')
                                     containerGalerija.appendChild(popUpDiv)
                                     // klikDiv.style.backgroundImage = `url('${event.target.currentSrc}')`
-                                    klikImg.setAttribute('class', 'slikaVeca')
+                                    
                                     popUpDiv.appendChild(klikImg)
                                     
 
@@ -108,18 +108,22 @@ db.collection('galerijaKategorije')
                                             let sirina = window.innerHeight - window.innerHeight * 30 / 100
                                             let sirinaSlike = sirina * 1.5
                                             klikImg.setAttribute('width', `${sirinaSlike}px`)
+                                            klikImg.setAttribute('class', 'slikaVeca')
 
                                         } else if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ){
 
-                                            let visina = screen.width - screen.width * 20 / 100
-                                            let visinaSlike = visina / 1.5
+                                            // let visina = screen.width - screen.width * 20 / 100
+                                            // let visinaSlike = visina / 1.5
+                                            let visinaSlike = screen.width / 1.5
                                             klikImg.setAttribute('height', `${visinaSlike}px`) 
+                                            klikImg.setAttribute('class', 'mobSlikaVeca')
 
                                         } else {
 
                                             let visina = window.innerWidth - window.innerWidth * 20 / 100
                                             let visinaSlike = visina / 1.5
-                                            klikImg.setAttribute('height', `${visinaSlike}px`) 
+                                            klikImg.setAttribute('height', `${visinaSlike}px`)
+                                            klikImg.setAttribute('class', 'slikaVeca')
 
                                         }
 
