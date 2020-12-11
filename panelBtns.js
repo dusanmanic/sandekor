@@ -30,7 +30,7 @@ for(let i=0; i<nizBtns.length; i++) {
 }
 
 let responseLi = document.createElement('LI')
-responseLi.innerHTML = `<button class="menuBtn  responseBtn" id="menuBtn">MENU</button>`
+responseLi.innerHTML = `<button class="responseBtn" id="menuBtn">MENU</button>`
 responseButton.appendChild(responseLi)
 
 // console.log(window.innerWidth)
@@ -52,7 +52,7 @@ if(w < 455) {
             if(counterShowHide === 1) {   
                 console.log(counterShowHide)             
                 document.querySelector('.hoverBtns').style.display = "flex"    
-                document.querySelector('.hoverDiv').style.display = "flex"    
+                document.querySelector('.hoverDiv').style.display = "block"    
             } else if (counterShowHide === 2)  {
                 console.log(counterShowHide)
                 document.querySelector('.hoverBtns').style.display = "none"
