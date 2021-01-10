@@ -1,10 +1,20 @@
+// Računa visinu viewport-a i dodeljuje height atribut body elementu
+calcVH();
+function calcVH() {
+    var vH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    document.body.setAttribute("style", "height:" + vH + "px;");
+  }
+
+// document.body.style.height = `${window.innerHeight}px`
+// console.log(window.innerHeight)
+
 let login = document.getElementById('login')
 let logOut = document.getElementById('logout')
 let signin = document.getElementById('signin')
 let panel = document.getElementById('panel')
 
+//Proverava da li je korisnik logovan i prema tome dodaje menja buttons
 btnCheck()
-
 function btnCheck() {
 
     let logBtn = localStorage.getItem('btns')
@@ -23,6 +33,7 @@ function btnCheck() {
     }
 }
 
+//Proverava da li je korisnik logovan (f-ja se poziva u f-ji logout)
 function checker() {
     
     db.collection('login_info')
@@ -43,7 +54,7 @@ function checker() {
                 if(trenutniUser === userInfo.information.user && trenutniToken === userInfo.token) {
                     if(userInfo.log) {
                         document.body.style.display = "block"
-                        console.log(`Korisnik je logovan`)
+                        //console.log(`Korisnik je logovan`)
                     } else {
                         window.location.href = './login/login.html'
                     }
@@ -75,11 +86,11 @@ function logout () {
                 datum = new Date ();
                 // datumProvera = new Date ( datum );
                 // datumProvera.setMinutes ( new Date().getMinutes() + 30 );
-                console.log(localStorage.getItem('curentUser') === userInfo.information.user)
-                console.log(userInfo.information.user)
+                //console.log(localStorage.getItem('curentUser') === userInfo.information.user)
+                //console.log(userInfo.information.user)
 
                 if(localStorage.getItem('curentUser') === userInfo.information.user) {
-                    console.log('ulaziOvde')
+                    //console.log('ulaziOvde')
                     let datum = new Date();
                     let update = {
                         logged_out: firebase.firestore.Timestamp.fromDate(datum),
@@ -102,8 +113,3 @@ function logout () {
         console.log(`Došlo je do greške: ${error}`)
     });
 }
-
-// window.addEventListener('resize', event => {
-//     console.log(window.innerHeight)
-//     console.log(window.innerWidth)
-// })

@@ -51,12 +51,12 @@ if(w < 455) {
 
             if(counterShowHide === 1) {   
                 console.log(counterShowHide)             
-                document.querySelector('.hoverBtns').style.display = "flex"    
-                document.querySelector('.hoverDiv').style.display = "block"    
+                // document.querySelector('.hoverBtns').style.display = "flex" 
+                document.querySelector('.hoverDiv').style.marginTop = "0px"    
             } else if (counterShowHide === 2)  {
                 console.log(counterShowHide)
-                document.querySelector('.hoverBtns').style.display = "none"
-                document.querySelector('.hoverDiv').style.display = "none"
+                // document.querySelector('.hoverBtns').style.display = "none"
+                document.querySelector('.hoverDiv').style.marginTop = "-280px"
                 counterShowHide = 0
             }       
     

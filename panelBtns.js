@@ -4,7 +4,7 @@ let responseButton = document.querySelector('.responseButton')
 let btnsDiv = document.createElement('DIV')
 let btnsUl = document.createElement('UL')
 
-heder.parentNode.insertBefore(btnsDiv, heder.nextSibling)
+heder.parentNode.insertBefore(btnsDiv, heder.nextSibling) // Ubacuje element btnsDiv posle heder elementa
 
 btnsDiv.classList.add('hoverDiv')
 btnsUl.classList.add('hoverBtns')
@@ -38,10 +38,10 @@ responseButton.appendChild(responseLi)
 let w = window.innerWidth
 
 if(w < 455) {
-    console.log('jeste')
-    console.log(counterShowHide)
+    //console.log('jeste')
+    //console.log(counterShowHide)
     heder.addEventListener('click', event => {
-        console.log(event)
+        //console.log(event)
         // console.log(event.path[0].id)
         let btnId = event.path[0].id
         //console.log(window.innerHeight)
@@ -50,13 +50,13 @@ if(w < 455) {
             counterShowHide++
 
             if(counterShowHide === 1) {   
-                console.log(counterShowHide)             
-                document.querySelector('.hoverBtns').style.display = "flex"    
-                document.querySelector('.hoverDiv').style.display = "block"    
+                //console.log(counterShowHide)             
+                // document.querySelector('.hoverBtns').style.display = "flex" 
+                document.querySelector('.hoverDiv').style.marginTop = "0px"    
             } else if (counterShowHide === 2)  {
-                console.log(counterShowHide)
-                document.querySelector('.hoverBtns').style.display = "none"
-                document.querySelector('.hoverDiv').style.display = "none"
+                //console.log(counterShowHide)
+                // document.querySelector('.hoverBtns').style.display = "none"
+                document.querySelector('.hoverDiv').style.marginTop = "-280px"
                 counterShowHide = 0
             }       
     

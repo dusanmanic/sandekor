@@ -1,6 +1,6 @@
 body {
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
     margin: 0;
@@ -14,7 +14,7 @@ header {
     display: flex;
     width: 100vw;
     height: 7vh;
-    background-color: rgb(0, 0, 0, 0.5);
+    background-color: rgba(120, 120, 120);
 }
 
 .headBtns {
@@ -152,14 +152,11 @@ li {
     }
 
     .hoverBtns {
-        display: none;
         height: 280px;
         align-items: center;
         justify-content: space-around;
         flex-direction: column;
         background-color: rgb(0, 0, 0, 0.5);
-
-
     }
 
     .responseBtn:focus:hover:active, .headerBtns:focus:hover:active {
@@ -167,11 +164,11 @@ li {
     }
 
     .hoverDiv{
-        display: none;
+        margin-top: -280px;
         width: 100vw;
         height: 280px;
         position: absolute;
-        z-index: 50;
+        z-index: 1;
         transition-property: all;
         transition-duration: .5s;          
     }

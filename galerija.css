@@ -1,7 +1,7 @@
 #containerGalerija {
     width: 100vw;
-    height: 93vh;
-    display: flex;    
+    display: flex;
+    flex-direction: column;
     overflow-x: hidden;
     
 }
@@ -14,6 +14,15 @@
     margin: auto;
     margin-top: 0;
 }
+
+.popUpImgHolder {
+    width: 93vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
 
 .holderImg {
     width: 150px;
@@ -43,14 +52,33 @@
 }
 
 .slikaVeca {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
     margin: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 20px 0 20px 0;
 }
 
-/* .mobSlikaVeca {
-    background-size: contain;
-    background-repeat: no-repeat;
-} */
+.slikaVeca:focus {
+    outline: 0px solid transparent;
+}
+
+.navBtns {
+    width: 30px;
+    height: 44px;
+    margin: 5px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+#btnExit {
+    width: 60px;
+    height: 44px;
+}
 
 .delBtnImg {
     width: 70px;
@@ -79,6 +107,36 @@
         justify-content: center;
         margin: auto;
         margin-top: 0;
+    }
+
+    .popUpImgHolder {
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navBtns {
+        width: 16px;
+        height: 23px;
+        margin: 5px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #btnExit {
+        width: 32px;
+        height: 23px;
+    }
+
+    .mobSlikaVeca {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
 
