@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>San Dekor</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="panel.css">
+    <link rel="stylesheet" href="panelStyle.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
     
@@ -13,19 +14,19 @@
         <ul class="responseButton">
 
         </ul>
-        <ul class="headBtns">
 
-        </ul>
         <ul class="loginSignin">
-            <li><button class="headerBtns" id="login" onclick="location.href = './login/login.html'">Log in</button></li>
-            <li><button class="headerBtns removeLi" id="panel" onclick="location.href = 'adminpanel.html'">Panel</button></li>
-            <li><button class="headerBtns removeLi" id="logout" onclick="logout()">Log out</button></li>
-            <li><button class="headerBtns" id="signin" onclick="">Sign in</button></li>
+            <li class="loginSignInList"><button class="loginSignInBtns" id="login" onclick="location.href = './login/login.html'">Log in</button></li>
+            <li class="loginSignInList"><button class="loginSignInBtns removeLi" id="panel" onclick="location.href = 'adminpanel.html'">Panel</button></li>
+            <li class="loginSignInList"><button class="loginSignInBtns removeLi" id="logout" onclick="logout()">Log out</button></li>
+            <li class="loginSignInList"><button class="loginSignInBtns" id="signin" onclick="">Sign in</button></li>
         </ul>
     </header>
 
     <div id="container">
+        <ul class="headBtns">
 
+        </ul>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -53,6 +54,6 @@
     </script>
     <script src="panel.js"></script>
     <script src="script.js"></script>
-    <script src="panelBtns.js"></script>
+    <script src="adminPanelBtns.js"></script>
 </body>
 </html>
