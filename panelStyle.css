@@ -157,6 +157,15 @@ li:not(.loginSignInList) {
         background-color: rgba(106, 106, 106);
     }
 
+    .headerBtns {
+        background: none;
+        color: white;
+        font-size: 14px;
+        padding: 0px;
+        border: none;
+        cursor: pointer;
+    }
+
     .responseButton {
         margin: auto;
         display: block;
